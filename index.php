@@ -5,6 +5,7 @@
   <!-- Se utiliza la metaetiqueta para que bootstrap funcione en los celulares o
   tablets, no tiene efecto en el página -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/mis_estilos.css">
@@ -26,7 +27,8 @@
       <!-- Pongo el parráfo por si se le agrega un texto al rededor de la imagen
     en un futuro. El nombre de alt es para que lo utilicen las aplicaciones
     que le leen las páginas a las personas no videntes-->
-      <img src=" " width="200" height="150" alt="LOGO"><br clear="all"/>
+      <!--img src="prueba.jpg" width="200" height="150" alt="LOGO"><br clear="all"/-->
+      <i class="fa fa-camera-retro"></i>
     </div>
   </header>
 
