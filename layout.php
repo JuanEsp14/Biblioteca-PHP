@@ -8,6 +8,7 @@
   if(isset($_SESSION["session_username"])){
     $query_user = mysqli_query($link, "SELECT * FROM usuarios WHERE email ='".$_SESSION['session_username']."' LIMIT 1");
     $user = mysqli_fetch_array($query_user);
+
   }
  ?>
 
