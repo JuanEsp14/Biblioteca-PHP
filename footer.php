@@ -2,6 +2,8 @@
 </html>
 
 <?php
-  mysqli_free_result($query_user);
-  mysqli_close($link);
+  if(isset($_SESSION["session_username"])){
+    mysqli_free_result($query_user);
+    mysqli_close($link);
+  }
  ?>
