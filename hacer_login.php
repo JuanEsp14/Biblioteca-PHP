@@ -4,7 +4,6 @@
 $link = conectar();
 
 if(isset($_SESSION["session_username"])){
-  // echo "Session is set"; // for testing purposes
   header("Location: index.php");
   exit;
 }
