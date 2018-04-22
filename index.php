@@ -13,14 +13,14 @@
 <body>
   <header>
     <div class="text-right">
-      <a href="show-producto.html">Iniciar Sesi&oacuten</a>
-      <a href="show-producto.html">Registrarse</a>
+      <a href="show-producto.php">Iniciar Sesi&oacuten</a>
+      <a href="show-producto.php">Registrarse</a>
       <!-- Si se está loggeado, capaz que se transforme en un input
       <a href=" ">Cerrar sesi&oacuten</a> -->
     </div>
     <div>
       <!-- Si el usuario está logueado mostrar su nombre -->
-      <p class="text-right">Usuario loggeado<a href="show-producto.html"> %nombre</a></p>
+      <p class="text-right">Usuario loggeado<a href="show-producto.php"> %nombre</a></p>
     </div>
     <div id="Logo" class="navbar-header">
       <!-- Pongo el parráfo por si se le agrega un texto al rededor de la imagen
@@ -53,8 +53,8 @@
       <table>
         <tr>
           <th>Portada</th>
-          <th><a href="show-producto.html">Título</a></th>
-          <th><a href="show-producto.html">Autor</a></th>
+          <th><a href="show-producto.php">Título</a></th>
+          <th><a href="show-producto.php">Autor</a></th>
           <th>Ejemplares</th>
           <!-- Si el usuario logueado es un bibliotecario -->
           <th>Título</th>
@@ -82,7 +82,7 @@
 
     <footer>
       <div class="container">
-        <button type="button" class="btn"><a href="./index.html"> Primer P&aacutegina</a></button>
+        <button type="button" class="btn"><a href="./index.php"> Primer P&aacutegina</a></button>
         <button type="button" class="btn">P&aacutegina Anterior</button>
         <button type="button" class="btn">P&aacutegina Siguiente</button>
         <button type="button" class="btn">&Uacuteltima P&aacutegina</button>

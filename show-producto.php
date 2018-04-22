@@ -39,11 +39,11 @@
     <table>
       <tr>
         <th>Portada</th>
-        <th><a href="show-producto.html">Título</a></th>
+        <th><a href="show-producto.php">Título</a></th>
         <th>Ejemplares</th>
       </tr>
       <tr>
-        <td><a href="show-producto.html"><img src=" " width="75" height="75" alt="nombre"></a></td>
+        <td><a href="show-producto.php"><img src=" " width="75" height="75" alt="nombre"></a></td>
         <td><a href=" ">Nombre libro</a></td>
         <td>Stock</td>
       </tr>
@@ -90,15 +90,15 @@
       <table>
         <tr>
           <th>Portada</th>
-          <th><a href="show-producto.html">Título</a></th>
-          <th><a href="show-producto.html">Autor</a></th>
+          <th><a href="show-producto.php">Título</a></th>
+          <th><a href="show-producto.php">Autor</a></th>
           <th>Estado</th>
           <th>Fecha</th>
         </tr>
         <tr>
-          <td><a href="show-producto.html"><img src=" " width="75" height="75" alt="nombre"></a></td>
-          <td><a href="show-producto.html">Nombre libro</a></td>
-          <td><a href="show-producto.html">Nombre autor</a></td>
+          <td><a href="show-producto.php"><img src=" " width="75" height="75" alt="nombre"></a></td>
+          <td><a href="show-producto.php">Nombre libro</a></td>
+          <td><a href="show-producto.php">Nombre autor</a></td>
           <td>Estado</td>
           <td>Fecha</td>
         </tr>
@@ -106,7 +106,7 @@
     </div>
 
   <div id="footer">
-    <button type="button" class="btn"><a href="./index.html"> Primer P&aacutegina</a></button>
+    <button type="button" class="btn"><a href="./index.php"> Primer P&aacutegina</a></button>
     <button type="button" class="btn">P&aacutegina Anterior</button>
     <button type="button" class="btn">P&aacutegina Siguiente</button>
     <button type="button" class="btn">&Uacuteltima P&aacutegina</button>
