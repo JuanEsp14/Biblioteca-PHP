@@ -36,7 +36,7 @@
       <div class="col-md-6 text-right">
         <!-- Si el usuario está logueado mostrar su nombre -->
         <?php if(isset($_SESSION["session_username"])){ ?>
-          <p>Usuario loggeado<a href="show-producto.php"><?php echo $user['apellido'].", ".$user['nombre']; ?></a></p>
+          <p>Usuario loggeado<a href="perfil.php"><?php echo $user['apellido'].", ".$user['nombre']; ?></a></p>
           <a href="salir.php">Salir</a>
         <?php }else{ ?>
           <a href="inicio.php">Iniciar Sesi&oacuten</a>
