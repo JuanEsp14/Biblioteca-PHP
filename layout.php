@@ -5,8 +5,10 @@
   $link = conectar();
  ?>
  <?php
-  $query_user = mysqli_query($link, "SELECT * FROM usuarios WHERE email ='".$_SESSION['session_username']."' LIMIT 1");
-  $user = mysqli_fetch_array($query_user);
+  if(isset($_SESSION["session_username"])){
+    $query_user = mysqli_query($link, "SELECT * FROM usuarios WHERE email ='".$_SESSION['session_username']."' LIMIT 1");
+    $user = mysqli_fetch_array($query_user);
+  }
  ?>
 
 <html lang="en">
@@ -32,9 +34,13 @@
       </div>
       <div class="col-md-6 text-right">
         <!-- Si el usuario está logueado mostrar su nombre -->
-        <p>Usuario loggeado<a href="show-producto.php"> %nombre</a></p>
-        <a href="inicio.php">Iniciar Sesi&oacuten</a>
-        <a href="registro.php">Registrarse</a>
+        <?php if(isset($_SESSION["session_username"])){ ?>
+          <p>Usuario loggeado<a href="show-producto.php"><?php echo $user['apellido'].", ".$user['nombre']; ?></a></p>
+          <a href="salir.php">Salir</a>
+        <?php }else{ ?>
+          <a href="inicio.php">Iniciar Sesi&oacuten</a>
+          <a href="registro.php">Registrarse</a>
+        <?php } ?>
       </div>
     </div>
   </header>
