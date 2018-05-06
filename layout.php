@@ -24,10 +24,14 @@
 <body>
   <header>
     <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="index.php"><img src="logo_icono.png" width="40" height="40" alt="LOGO"></a>
+      <a class="navbar-brand" href="index.php">
+        <img src="logo_icono.png" width="40" height="40" alt="LOGO">
+      </a>
       <div class="text-right">
         <?php if(isset($_SESSION["session_username"])){ ?>
-          <a class="btn" href="perfil.php"><?php echo $user['apellido'].", ".$user['nombre']; ?></a>
+          <a class="btn" href="mi_perfil.php">
+            <?php echo $user['rol'].": ".$user['apellido'].", ".$user['nombre']; ?>
+          </a>
           <a class="btn btn-danger" href='salir.php'>Salir</a>
         <?php }else{ ?>
           <a class="btn btn-success" href='inicio.php'>Iniciar Sesión</a>
