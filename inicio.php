@@ -19,14 +19,18 @@
   <body>
     <header>
       <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="inicio.php">
-          <img src="prueba.jpg" width="300" height="90" alt="LOGO">
+        <a class="navbar-brand" href="index.php">
+          <img src="logo_icono.png" width="40" height="40" alt="LOGO">
         </a>
       </nav>
     </header>
-    <div class="jumbotron">
+    <div class="container">
       <div id="login" class="row justify-content-center">
-        <div class="col-offset-3 col-md-6">
+        <div class="col-md-6">
+          <div class="text-center">
+            <img src="logo.png" alt="LOGO_IMAGEN">
+          </div>
+          <hr>
           <h1>Iniciar Sesión</h1>
           <?php if (!empty($_SESSION["error"])) {?>
             <div class='alert alert-danger' role='alert'>

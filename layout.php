@@ -24,7 +24,7 @@
 <body>
   <header>
     <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand"><img src="prueba.jpg" width="300" height="90" alt="LOGO"></a>
+      <a class="navbar-brand" href="index.php"><img src="logo_icono.png" width="40" height="40" alt="LOGO"></a>
       <div class="text-right">
         <?php if(isset($_SESSION["session_username"])){ ?>
           <a class="btn" href="perfil.php"><?php echo $user['apellido'].", ".$user['nombre']; ?></a>
