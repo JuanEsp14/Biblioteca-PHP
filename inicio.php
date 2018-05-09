@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
 
   <body>
@@ -42,7 +43,7 @@
           <?php } ?>
           <form name="loginform" id="loginform" action="hacer_login.php" method="POST">
             <p>
-              <label for="user_login">Nombre De Usuario</label>
+              <label for="user_login">Email</label>
               <input type="text" name="email" id="email" class="form-control" />
             </p>
             <p>

@@ -28,7 +28,7 @@
           exit;
         }
       }else{
-        $_SESSION['error'] = "Nombre de usuario ó contraseña invalida!";
+        $_SESSION['error'] = "Email ó contraseña invalida!";
         header("Location: inicio.php");
         exit;
       }
