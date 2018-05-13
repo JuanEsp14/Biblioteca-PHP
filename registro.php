@@ -43,7 +43,7 @@
               <?php } $_SESSION['error'] = '';?>
             </div>
           <?php } ?>
-          <form id="registeform" enctype="multipart/form-data" action="registrar.php" method="POST">
+          <form id="registeform" enctype="multipart/form-data" action="registrar.php" method="POST" onsubmit="return validar();">
             <div class="row" style="margin-top:10px;">
               <div class="col-md-6">
                 <label for="user_login">Nombre</label>

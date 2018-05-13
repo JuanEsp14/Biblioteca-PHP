@@ -57,11 +57,13 @@
     }
 
     if(empty($errors)){
-      $foto = file_get_contents($_FILES["foto"]["tmp_name"]);
-      $foto = mysqli_escape_string($foto);
+      $fp = fopen($_FILES['foto']['tmp_name'], 'r');
+      $foto = fread($fp, filesize($_FILES['foto']['tmp_name']));
+      $foto = addslashes($foto);
+      fclose($fp);
       # Agregamos al usuario
-      $sql = "INSERT INTO usuarios (email,nombre,apellido,clave,rol) VALUES ('emir@asd.com', 'emird', 'fermaded', '1234568', 'LECTOR')";
-      if (mysqli_query($link, $slq)) {
+      $sql = "INSERT INTO `usuarios` (email,nombre,apellido,clave,rol,foto) VALUES ('$email', '$nombre', '$apellido', '$clave', 'LECTOR', '$foto')";
+      if (mysqli_query($link, $sql)) {
         $_SESSION["session_username"] = $email;
 
         header("Location: index.php");
