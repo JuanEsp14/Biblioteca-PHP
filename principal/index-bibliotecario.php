@@ -1,7 +1,8 @@
 <?php
   $result = mysqli_query($link,
   'SELECT operaciones.*, titulo, cantidad, autores.nombre AS nomAu,
-  usuarios.nombre AS nomUs, usuarios.apellido AS apeUs, autores.apellido AS apeAu
+      usuarios.nombre AS nomUs, usuarios.apellido AS apeUs,
+      autores.apellido AS apeAu, autores.id AS autorID
    FROM operaciones INNER JOIN libros ON (libros.id = operaciones.libros_id)
    INNER JOIN usuarios ON (usuarios.id = operaciones.lector_id)
    INNER JOIN autores ON (autores.id = libros.autores_id)'
@@ -28,8 +29,8 @@
         <thead>
 
         <tr>
-          <th><a href="show-producto.php">Título</a></th>
-          <th><a href="show-producto.php">Autor</a></th>
+          <th><a href=" ">Título</a></th>
+          <th><a href=" ">Autor</a></th>
           <th>Lector</th>
           <th>Estado</th>
           <th>Fecha</th>
@@ -39,8 +40,8 @@
       <tbody>
         <?php while($row = mysqli_fetch_array($result)){ ?>
           <tr>
-            <td><a href="show-producto.html"><?php echo $row["titulo"] ?></a></td>
-            <td><a href="show-producto.html"><?php echo $row["nomAu"]  ?> <?php echo $row["apeAu"] ?></a></td>
+            <td><a href="show_libro.php?id=<?php echo $row["libros_id"] ?>"><?php echo $row["titulo"] ?></a></td>
+            <td><a href="show_autor.php?id=<?php echo $row["autorID"] ?>"><?php echo $row["nomAu"]  ?> <?php echo $row["apeAu"] ?></a></td>
             <td><?php echo $row["nomUs"]  ?> <?php echo $row["apeUs"] ?></td>
             <td><?php echo $row["ultimo_estado"] ?></td>
             <td><?php echo $row["fecha_ultima_modificacion"] ?></td>
