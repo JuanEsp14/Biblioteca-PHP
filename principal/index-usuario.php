@@ -1,8 +1,5 @@
 <?php
-  $result = mysqli_query($link,
-  'SELECT libros.*, nombre, apellido
-   FROM libros INNER JOIN autores ON (libros.autores_id = autores.id)'
-  );
+  include("header-index.php");
 ?>
   <div class="container row">
     <div class="col-md-12" id="Búsqueda">
@@ -31,16 +28,13 @@
       </thead>
       <tbody>
         <?php while($row = mysqli_fetch_array($result)){
-          $aux1 = mysqli_query($link,
-          'SELECT COUNT(*) AS res
-           FROM operaciones
-           WHERE ultimo_estado = "RESERVADO" AND libros_id ='.$row["id"]
-          );
-          $aux2 = mysqli_query($link,
-          'SELECT COUNT(*) AS res
-           FROM operaciones
-           WHERE ultimo_estado = "PRESTADO" AND libros_id ='.$row["id"]
-          );
+          $query = "SELECT COUNT(*) AS res FROM operaciones
+                WHERE ultimo_estado = 'RESERVADO' AND libros_id = ".$row['id'];
+          $aux1 = mysqli_query($link, $query);
+
+          $query = 'SELECT COUNT(*) AS res FROM operaciones
+                WHERE ultimo_estado = "PRESTADO" AND libros_id ='.$row["id"];
+          $aux2 = mysqli_query($link, $query);
           $cantRes = mysqli_fetch_array($aux1);
           $cantPres = mysqli_fetch_array($aux2)?>
           <tr>
@@ -58,8 +52,10 @@
                 <?php } ?>
             </td>
           </tr>
-        <?php } ?>
+        <?php }
+        ?>
       </tbody>
       </table>
+    <?php include('footer-index.php') ?>
     </div>
   </div>

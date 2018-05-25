@@ -1,8 +1,5 @@
 <?php
-  $result = mysqli_query($link,
-    'SELECT libros.*, nombre, apellido
-     FROM libros INNER JOIN autores ON (libros.autores_id = autores.id)'
-  );
+  include("header-index.php");
 ?>
   <div class="container row">
     <div class="col-md-12" id="Búsqueda">
@@ -43,5 +40,8 @@
         <?php } ?>
       </tbody>
       </table>
+      <?php
+        include("footer-index.php");
+      ?>
     </div>
   </div>

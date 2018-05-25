@@ -1,12 +1,5 @@
 <?php
-  $result = mysqli_query($link,
-  'SELECT operaciones.*, titulo, cantidad, autores.nombre AS nomAu,
-      usuarios.nombre AS nomUs, usuarios.apellido AS apeUs,
-      autores.apellido AS apeAu, autores.id AS autorID
-   FROM operaciones INNER JOIN libros ON (libros.id = operaciones.libros_id)
-   INNER JOIN usuarios ON (usuarios.id = operaciones.lector_id)
-   INNER JOIN autores ON (autores.id = libros.autores_id)'
-  );
+  include("header-index.php");
 ?>
   <div class="container row">
     <div class="col-md-12" id="Búsqueda">
@@ -56,5 +49,6 @@
         <?php } ?>
       </tbody>
       </table>
+      <?php include("footer-index.php");?>
     </div>
   </div>
