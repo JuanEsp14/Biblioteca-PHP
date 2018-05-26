@@ -3,20 +3,24 @@
 ?>
   <div class="container row">
     <div class="col-md-12" id="Búsqueda">
-      <form>
+      <form name="form1" method="post" action="index.php">
         <fieldset>
           <legend> Refinar b&uacutesqueda </legend>
-          T&iacutetulo: <input type="text"><br>
-          Autor: <input type="text"><br>
-          Lector: <input type="text"><br>
-          Fecha desde: <input type="date"><br>
-          Fecha hasta  <input type="date"><br>
-          <button type="button" class="btn btn-default">Buscar</button>
+          T&iacutetulo: <input name="titulo" type="text"><br>
+          Autor: <input name="autor" type="text"><br>
+          Lector: <input name="lector" type="text"><br>
+          Fecha desde: <input name="inicio" type="date"><br>
+          Fecha hasta  <input name="final" type="date"><br>
+          <br>
+          <button type="submit" class="btn btn-default">Buscar</button>
         </fieldset>
       </form>
     </div>
 
+<?php  include("busqueda.php");?>
+
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="Listado">
+      <br>
       <h4>Operaciones</h4>
       <table class="table table-bordered">
         <thead>

@@ -11,16 +11,16 @@
   //Primer libro a mostrar
   $primer_libro = ($pagina_actual - 1) * $por_pagina;
 
-  if(isset($_SESSION["session_username"])) {
-    if($user['rol'] == "BIBLIOTECARIO"){
-      $result = mysqli_query($link,
-      'SELECT operaciones.*, titulo, cantidad, autores.nombre AS nomAu,
-          usuarios.nombre AS nomUs, usuarios.apellido AS apeUs,
-          autores.apellido AS apeAu, autores.id AS autorID
-       FROM operaciones INNER JOIN libros ON (libros.id = operaciones.libros_id)
-       INNER JOIN usuarios ON (usuarios.id = operaciones.lector_id)
-       INNER JOIN autores ON (autores.id = libros.autores_id)'
-      );
+  if(isset($_SESSION["session_username"]) && $user['rol'] == "BIBLIOTECARIO") {
+    //Consulta a la BD
+    $query = "SELECT operaciones.*, titulo, cantidad, autores.nombre AS nomAu,
+        usuarios.nombre AS nomUs, usuarios.apellido AS apeUs,
+        autores.apellido AS apeAu, autores.id AS autorID
+     FROM operaciones INNER JOIN libros ON (libros.id = operaciones.libros_id)
+     INNER JOIN usuarios ON (usuarios.id = operaciones.lector_id)
+     INNER JOIN autores ON (autores.id = libros.autores_id)
+     LIMIT $primer_libro, $por_pagina";
+    $result = mysqli_query($link, $query);
     }else {
       //Consulta a la BD
       $query = "SELECT libros.*, nombre, apellido
@@ -28,13 +28,6 @@
       LIMIT $primer_libro, $por_pagina";
       $result = mysqli_query($link, $query);
     }
-  }else {
-    //Consulta a la BD
-    $query = "SELECT libros.*, nombre, apellido
-    FROM libros INNER JOIN autores ON (libros.autores_id = autores.id)
-    LIMIT $primer_libro, $por_pagina";
-    $result = mysqli_query($link, $query);
-  }
 
   //Cantidad de libros
   $total_libros = mysqli_num_rows($result);

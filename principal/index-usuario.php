@@ -1,19 +1,20 @@
-<?php
-  include("header-index.php");
-?>
-  <div class="container row">
-    <div class="col-md-12" id="Búsqueda">
-      <form>
-        <fieldset>
-          <legend> Refinar b&uacutesqueda </legend>
-          T&iacutetulo: <input type="text"><br>
-          Autor: <input type="text"><br>
-          <button type="button" class="btn btn-default">Buscar</button>
-        </fieldset>
-      </form>
-    </div>
+<?php  include("header-index.php");?>
+<div class="container row">
+  <div class="col-md-12" id="Búsqueda">
+    <form name="form1" method="post" action="index.php">
+      <fieldset>
+        <legend> Refinar b&uacutesqueda </legend>
+          T&iacutetulo: <input name="titulo" type="text"><br>
+          Autor: <input name="autor" type="text"><br><br>
+        <button type="submit" class="btn btn-default">Buscar</button>
+      </fieldset>
+    </form>
+  </div>
+
+<?php  include("busqueda.php");?>
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="Listado">
+      <br>
       <h4>Cat&aacutelogo de libros</h4>
       <table class="table table-bordered">
         <thead>
