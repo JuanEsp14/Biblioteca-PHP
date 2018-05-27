@@ -1,7 +1,7 @@
 <?php include('layout.php'); ?>
 
 <?php if(isset($_SESSION["session_username"])) {
-  if($user['rol'] == "BIBLIOTECARIO"){
+  if($user['rol'] == 'BIBLIOTECARIO'){
     include('./principal/index-bibliotecario.php');
   }else {
     include('./principal/index-usuario.php');

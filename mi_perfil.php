@@ -8,9 +8,7 @@
   );
 ?>
 <div id="Perfil">
-  <div class="">
-    <img src="logo.png" alt="LOGO">
-  </div>
+  <img src="logo.png" alt="LOGO">
   <hr>
   <div class="row">
     <div class="col-md-2">
