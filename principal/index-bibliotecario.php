@@ -66,9 +66,39 @@
               <td><?php echo $row['fecha_ultima_modificacion'] ?></td>
               <td>
                 <?php if($row['ultimo_estado'] == 'PRESTADO'){ ?>
-                  <button type="button" class="btn btn-info">Devolver</button>
+                  <button type="button" class="btn btn-info" onclick="devolver()">Devolver</button>
+                  <script>
+                  function devolver()
+                  {
+                    <?php
+                      $usuario = $user['id'];
+                      $libro = $row['id'];
+                      $date = date('Y-m-d H:i:s');
+                      $query = "UPDATE `operaciones` SET ultimo_estado = 'DEVUELTO' AND fecha_ultima_modificacion = '$date'
+                      WHERE libros_id = '$libro' AND lector_id = '$libro' AND ultimo_estado = 'PRESTADO'" ;
+                      mysqli_query($link, $query);
+                   ?>
+                    alert('Se realizó su pedido');
+                    setTimeout("location.reload()", 10);
+                  }
+                </script>
                 <?php }elseif ($row['ultimo_estado'] == 'RESERVADO') {?>
-                  <button type="button" class="btn btn-info">Prestar</button>
+                  <button type="button" class="btn btn-info" onclick="prestar()">Prestar</button>
+                    <script>
+                    function prestar()
+                    {
+                      <?php
+                        $usuario = $user['id'];
+                        $libro = $row['id'];
+                        $date = date('Y-m-d H:i:s');
+                        $query = "UPDATE `operaciones` SET ultimo_estado = 'PRESTADO' AND fecha_ultima_modificacion = '$date'
+                        WHERE libros_id = '$libro' AND lector_id = '$libro' AND ultimo_estado = 'RESERVADO'" ;
+                        mysqli_query($link, $query);
+                     ?>
+                      alert('Se realizó su pedido');
+                      setTimeout("location.reload()", 10);
+                    }
+                  </script>
                 <?php } ?>
               </td>
             </tr>

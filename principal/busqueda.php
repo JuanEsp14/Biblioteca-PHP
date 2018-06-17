@@ -32,7 +32,8 @@
          INNER JOIN autores ON (autores.id = libros.autores_id)
          WHERE libros.titulo LIKE '%$titulo%' AND (autores.nombre LIKE '%$autor%' OR
           autores.apellido LIKE '%$autor%') AND (usuarios.nombre LIKE '%$lector%' OR
-          usuarios.apellido LIKE '%$lector%')";
+          usuarios.apellido LIKE '%$lector%')
+          ORDER BY titulo";
         if($inicio != ""){
           $query .= " AND fecha_ultima_modificacion > '$inicio' ";
         }
@@ -50,10 +51,11 @@
       if(isset($_POST["autor"]))
         $autor=$_POST["autor"];
       //Busco por título y autor
-        $query = "SELECT libros.*, nombre, apellido
+        $query = "SELECT libros.*, titulo, nombre, apellido
         FROM libros INNER JOIN autores ON (libros.autores_id = autores.id)
         WHERE titulo LIKE '%$titulo%' AND (nombre LIKE '%$autor%' OR
             apellido LIKE '%$autor%')
+        ORDER BY titulo
         LIMIT $primer_libro, $por_pagina";
         $result = mysqli_query($link, $query);
     }

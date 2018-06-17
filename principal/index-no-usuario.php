@@ -9,7 +9,7 @@
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">
-                <label for="titulo">T&iacutetulo: </label>
+                <label for="titulo"> T&iacutetulo: </label>
                 <input class="form-control" name="titulo" type="text" autocomplete="off">
               </div>
               <div class="col-md-6">
