@@ -13,16 +13,16 @@
 
   if(isset($_SESSION["session_username"]) && $user['rol'] == "BIBLIOTECARIO") {
       $titulo=""; $autor=""; $lector=""; $inicio=""; $final="";
-      if(isset($_POST["titulo"]))
-        $titulo=$_POST["titulo"];
-      if(isset($_POST["autor"]))
-        $autor=$_POST["autor"];
-      if(isset($_POST["lector"]))
-        $lector=$_POST["lector"];
-      if(isset($_POST["inicio"]))
-        $inicio=$_POST["inicio"];
-      if(isset($_POST["final"]))
-        $final=$_POST["final"];
+      if(isset($_Get["titulo"]))
+        $titulo=$_GET["titulo"];
+      if(isset($_GET["autor"]))
+        $autor=$_GET["autor"];
+      if(isset($_GET["lector"]))
+        $lector=$_GET["lector"];
+      if(isset($_GET["inicio"]))
+        $inicio=$_GET["inicio"];
+      if(isset($_GET["final"]))
+        $final=$_GET["final"];
       //Busco por título y autor
         $query = "SELECT operaciones.*, titulo, cantidad, autores.nombre AS nomAu,
             usuarios.nombre AS nomUs, usuarios.apellido AS apeUs,
@@ -40,28 +40,34 @@
         if($final != ""){
           $query .= " AND fecha_ultima_modificacion < '$final' ";
         }
+        $resultCount = mysqli_query($link, $query);
         $query .= " LIMIT $primer_libro, $por_pagina";
 
         $result = mysqli_query($link, $query);
     }else {
       $titulo="";
       $autor="";
-      if(isset($_POST["titulo"]))
-        $titulo=$_POST["titulo"];
-      if(isset($_POST["autor"]))
-        $autor=$_POST["autor"];
+      if(isset($_GET["titulo"]))
+        $titulo=$_GET["titulo"];
+      if(isset($_GET["autor"]))
+        $autor=$_GET["autor"];
+
+      $url= "index.php?titulo=".$titulo."&autor=".$autor;
       //Busco por título y autor
         $query = "SELECT libros.*, titulo, nombre, apellido
         FROM libros INNER JOIN autores ON (libros.autores_id = autores.id)
         WHERE titulo LIKE '%$titulo%' AND (nombre LIKE '%$autor%' OR
             apellido LIKE '%$autor%')
-        ORDER BY titulo
-        LIMIT $primer_libro, $por_pagina";
+        ORDER BY titulo";
+
+        $resultCount = mysqli_query($link, $query);
+
+        $query .=" LIMIT $primer_libro, $por_pagina";
         $result = mysqli_query($link, $query);
     }
 
     //Cantidad de libros
-    $total_libros = mysqli_num_rows($result);
+    $total_libros = mysqli_num_rows($resultCount);
     //Cantidad de páginas
-    $total_paginas = ceil($total_libros / $por_pagina)+1;
+    $total_paginas = ceil($total_libros / $por_pagina);
  ?>
