@@ -13,7 +13,7 @@
 
   if(isset($_SESSION["session_username"]) && $user['rol'] == "BIBLIOTECARIO") {
       $titulo=""; $autor=""; $lector=""; $inicio=""; $final="";
-      if(isset($_Get["titulo"]))
+      if(isset($_GET["titulo"]))
         $titulo=$_GET["titulo"];
       if(isset($_GET["autor"]))
         $autor=$_GET["autor"];
