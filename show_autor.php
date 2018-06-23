@@ -33,7 +33,18 @@
       <th>Ejemplares</th>
 
     </tr>
-    <?php while($row = mysqli_fetch_array($libros)){ ?>
+    <?php while($row = mysqli_fetch_array($libros)){
+        $query = "SELECT COUNT(*) AS res FROM operaciones
+        WHERE ultimo_estado = 'RESERVADO' AND libros_id = ".$row['id'];
+        $aux1 = mysqli_query($link, $query);
+
+        $query = 'SELECT COUNT(*) AS res FROM operaciones
+        WHERE ultimo_estado = "PRESTADO" AND libros_id ='.$row["id"];
+        $aux2 = mysqli_query($link, $query);
+
+
+        $cantRes = mysqli_fetch_array($aux1);
+        $cantPres = mysqli_fetch_array($aux2);?>
       <tr>
         <td>
           <?php
@@ -54,7 +65,7 @@
             echo "</a>";
           ?>
         </td>
-        <td>Ejemplares</td>
+        <td><?php echo $row["cantidad"]?> ( <?php echo $cantRes['res']?> reservados <?php echo $cantPres['res']?> prestados)</td>
       </tr>
     <?php } ?>
   </table>
