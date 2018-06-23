@@ -55,8 +55,8 @@
               echo "</a>";
             ?>
           </td>
-          <td>Estado</td>
-          <td>Fecha</td>
+          <td><?php echo $row['ultimo_estado'] ?></td>
+          <td><?php echo $row['fecha_ultima_modificacion'] ?></td>
         </tr>
       <?php } ?>
     </table>
