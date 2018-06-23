@@ -71,7 +71,7 @@
           <td><?php echo $row["cantidad"]?> ( <?php echo $cantRes['res']?> reservados <?php echo $cantPres['res']?> prestados)</td>
           <td>
             <?php if(($row["cantidad"] > $cantRes['res']+$cantPres['res']) &&
-            ($reservado['res'] == 0)){ ?>
+            (3 > $cantRes['res']+$cantPres['res']) && ($reservado['res'] == 0)){ ?>
               <button type="button" class="btn btn-info" onclick="mifuncion()">Reservar</button>
               <script>
               function mifuncion()
