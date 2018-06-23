@@ -23,6 +23,8 @@
         $inicio=$_GET["inicio"];
       if(isset($_GET["final"]))
         $final=$_GET["final"];
+
+        $url= "index.php?titulo=".$titulo."&autor=".$autor."&lector=".$lector."&inicio=".$inicio."&final=".$final;
       //Busco por título y autor
         $query = "SELECT operaciones.*, titulo, cantidad, autores.nombre AS nomAu,
             usuarios.nombre AS nomUs, usuarios.apellido AS apeUs,

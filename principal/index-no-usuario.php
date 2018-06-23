@@ -1,6 +1,7 @@
+<?php  include("busqueda.php");?>
 <div class="container row">
   <div class="col-md-12" id="Búsqueda" style="margin-top:10px;">
-    <form name="form1" method="post" action="index.php">
+    <form name="form1" method="get" action="index.php">
       <fieldset>
         <div class="row">
           <div class="col-md-6">
@@ -10,11 +11,11 @@
             <div class="row">
               <div class="col-md-6">
                 <label for="titulo"> T&iacutetulo: </label>
-                <input class="form-control" name="titulo" type="text" autocomplete="off">
+                <input class="form-control" value="<?php echo $titulo ?>" name="titulo" type="text" autocomplete="off">
               </div>
               <div class="col-md-6">
                 <label for="autor">Autor: </label>
-                <input class="form-control" name="autor" type="text" autocomplete="off">
+                <input class="form-control" value="<?php echo $autor ?>" name="autor" type="text" autocomplete="off">
               </div>
             </div>
             <button type="submit"
@@ -27,8 +28,6 @@
       </fieldset>
     </form>
   </div>
-
-<?php  include("busqueda.php");?>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="Listado">
     <br>

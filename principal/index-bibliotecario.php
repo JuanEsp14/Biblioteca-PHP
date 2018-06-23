@@ -2,31 +2,32 @@
   <div class="col-md-4 align-self-center">
     <img src="logo.png" alt="LOGO">
   </div>
+  <?php  include("busqueda.php");?>
   <div class="col-md-8" id="Búsqueda" style="margin-top:10px;">
-    <form name="form1" method="post" action="index.php">
+    <form name="form1" method="get" action="index.php">
       <fieldset>
         <div class="row">
           <div class="col-md-4">
             <label for="titulo">T&iacutetulo:</label>
-            <input class="form-control" name="titulo" type="text" autocomplete="off">
+            <input class="form-control" value="<?php echo $titulo ?>" name="titulo" type="text" autocomplete="off">
           </div>
           <div class="col-md-4">
             <label for="autor">Autor: </label>
-            <input class="form-control" name="autor" type="text" autocomplete="off">
+            <input class="form-control" value="<?php echo $autor ?>" name="autor" type="text" autocomplete="off">
           </div>
           <div class="col-md-4">
             <label for="lector">Lector: </label>
-            <input class="form-control" name="lector" type="text" autocomplete="off">
+            <input class="form-control" value="<?php echo $lector ?>" name="lector" type="text" autocomplete="off">
           </div>
         </div>
         <div class="row" style="margin-top:10px;">
           <div class="col-md-4">
             <label for="inicio">Fecha desde: </label>
-            <input class="form-control" name="inicio" type="date" autocomplete="off">
+            <input class="form-control" value="<?php echo $inicio ?>" name="inicio" type="date" autocomplete="off">
           </div>
           <div class="col-md-4">
             <label for="final">Fecha hasta: </label>
-            <input class="form-control" name="final" type="date" autocomplete="off">
+            <input class="form-control" value="<?php echo $final ?>" name="final" type="date" autocomplete="off">
           </div>
           <div class="col-md-4 text-right" style="margin-top:25px;">
             <button type="submit"
@@ -40,7 +41,6 @@
     </form>
   </div>
 
-<?php  include("busqueda.php");?>
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="Listado">
       <br>
