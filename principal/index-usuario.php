@@ -1,4 +1,5 @@
-<?php  include("busqueda.php");?>
+<?php  include("funciones/busqueda.php");?>
+<?php  include("funciones/reservar.php");?>
 <div class="container row">
   <div class="col-md-12" id="Búsqueda" style="margin-top:10px;">
     <form name="form1" method="get" action="index.php">
@@ -18,11 +19,7 @@
                 <input class="form-control" name="autor" value="<?php echo $autor ?>" type="text" autocomplete="off">
               </div>
             </div>
-            <button type="submit"
-            class="btn btn-default pull-right"
-            style="margin-top:10px;">
-            Buscar
-          </button>
+            <button type="submit" class="btn btn-default pull-right" style="margin-top:10px;">Buscar</button>
         </div>
       </div>
     </fieldset>
@@ -57,9 +54,14 @@
         WHERE ultimo_estado = "RESERVADO" AND lector_id = '.$user['id'].' AND libros_id = '.$row['id'];
         $aux3 = mysqli_query($link, $query);
 
+        $query = 'SELECT COUNT(*) AS res FROM operaciones
+        WHERE ultimo_estado = "RESERVADO" OR ultimo_estado = "PRESTADO" AND lector_id = '.$user['id'];
+        $aux4 = mysqli_query($link, $query);
+
         $cantRes = mysqli_fetch_array($aux1);
         $cantPres = mysqli_fetch_array($aux2);
-        $reservado = mysqli_fetch_array($aux3);?>
+        $reservado = mysqli_fetch_array($aux3);
+        $opsUsuario = mysqli_fetch_array($aux4);?>
         <tr>
           <td>
             <?php
@@ -71,24 +73,9 @@
           <td><?php echo $row["cantidad"]?> ( <?php echo $cantRes['res']?> reservados <?php echo $cantPres['res']?> prestados)</td>
           <td>
             <?php if(($row["cantidad"] > $cantRes['res']+$cantPres['res']) &&
-            (3 > $cantRes['res']+$cantPres['res']) && ($reservado['res'] == 0)){ ?>
-              <button type="button" class="btn btn-info" onclick="mifuncion()">Reservar</button>
-              <script>
-              function mifuncion()
-              {
-                <?php
-                  $date = date('Y-m-d H:i:s');
-                  $usuario = $user['id'];
-                  $libro = $row['id'];
-                  $query = "INSERT INTO `operaciones` (ultimo_estado, fecha_ultima_modificacion, lector_id, libros_id)
-                  VALUES ('RESERVADO', '$date', '$usuario', '$libro')" ;
-                  mysqli_query($link, $query);
-               ?>
-                alert('Se realizó su pedido');
-                setTimeout("location.reload()", 10);
-              }
-            </script>
-          <?php } ?>
+            (3 > $opsUsuario['res']) && ($reservado['res'] == 0)){
+              echo "<a class='btn btn-info' href='funciones/reservar.php?id=".$row['id']."&usId=".$user['id']."'>Reservar</a> ";
+           } ?>
         </td>
       </tr>
     <?php }

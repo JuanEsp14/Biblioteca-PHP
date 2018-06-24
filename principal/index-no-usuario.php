@@ -1,4 +1,4 @@
-<?php  include("busqueda.php");?>
+<?php  include("funciones/busqueda.php");?>
 <div class="container row">
   <div class="col-md-12" id="Búsqueda" style="margin-top:10px;">
     <form name="form1" method="get" action="index.php">
@@ -18,11 +18,7 @@
                 <input class="form-control" value="<?php echo $autor ?>" name="autor" type="text" autocomplete="off">
               </div>
             </div>
-            <button type="submit"
-              class="btn btn-default pull-right"
-              style="margin-top:10px;">
-              Buscar
-            </button>
+            <button type="submit" class="btn btn-default pull-right" style="margin-top:10px;">Buscar</button>
           </div>
         </div>
       </fieldset>
