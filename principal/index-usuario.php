@@ -1,5 +1,4 @@
 <?php  include("funciones/busqueda.php");?>
-<?php  include("funciones/reservar.php");?>
 <div class="container row">
   <div class="col-md-12" id="Búsqueda" style="margin-top:10px;">
     <form name="form1" method="get" action="index.php">
@@ -34,8 +33,8 @@
 
       <tr>
         <th>Portada</th>
-        <th>Título</a></th>
-        <th>Autor</a></th>
+        <th>Título</th>
+        <th>Autor</th>
         <th>Ejemplares</th>
         <th>Acción</th>
       </tr>

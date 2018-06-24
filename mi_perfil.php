@@ -1,10 +1,11 @@
 <?php include('layout.php') ?>
 <?php
   $operaciones = mysqli_query($link,
-    ' SELECT o.*, a.nombre, a.apellido, l.autores_id, l.titulo
+    " SELECT o.*, a.nombre, a.apellido, l.autores_id, l.titulo
       FROM operaciones o
       INNER JOIN libros l ON l.id = o.libros_id
-      INNER JOIN autores a ON a.id = l.autores_id'
+      INNER JOIN autores a ON a.id = l.autores_id
+      WHERE lector_id =".$user['id']
   );
 ?>
 <div id="Perfil">

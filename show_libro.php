@@ -10,6 +10,18 @@
       LIMIT 1 "
     );
   $libro = mysqli_fetch_array($query_libro);
+
+  $query = "SELECT COUNT(*) AS res FROM operaciones
+  WHERE ultimo_estado = 'RESERVADO' AND libros_id = ".$id;
+  $aux1 = mysqli_query($link, $query);
+
+  $query = 'SELECT COUNT(*) AS res FROM operaciones
+  WHERE ultimo_estado = "PRESTADO" AND libros_id ='.$id;
+  $aux2 = mysqli_query($link, $query);
+
+  $cantRes = mysqli_fetch_array($aux1);
+  $cantPres = mysqli_fetch_array($aux2);
+
 ?>
 
 <div id="Libro">
@@ -21,7 +33,7 @@
     <div class="col-md-8">
       <h1><?php echo $libro['titulo'] ?></h1>
       <h6><?php echo "Autor: ".$libro['nombre']." ".$libro['apellido'] ?></h6>
-      <h6><?php echo "Ejemplares" ?></h6>
+      <h6><?php echo "Ejemplares: ".$libro["cantidad"]." (".$cantRes['res']." reservados - ".$cantPres['res']." prestados)" ?> </h6>
       <h6>Descripci&oacuten</h6>
       <p><?php echo $libro['descripcion'] ?></p>
     </div>

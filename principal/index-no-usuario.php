@@ -33,7 +33,7 @@
 
       <tr>
         <th>Portada</th>
-        <th>>Título</a></th>
+        <th>Título</a></th>
         <th>Autor</a></th>
         <th>Ejemplares</th>
       </tr>

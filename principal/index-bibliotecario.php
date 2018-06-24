@@ -1,6 +1,4 @@
 <?php  include("funciones/busqueda.php");?>
-<?php  include("funciones/prestar.php");?>
-<?php  include("funciones/devolver.php");?>
 <div class="container row">
   <div class="col-md-4 align-self-center">
     <img src="logo.png" alt="LOGO">
