@@ -11,7 +11,7 @@
   //Primer libro a mostrar
   $primer_libro = ($pagina_actual - 1) * $por_pagina;
 
-  if(isset($_SESSION["session_username"]) && $user['rol'] == "BIBLIOTECARIO") {
+  if($user->rol == "BIBLIOTECARIO") {
       $titulo=""; $autor=""; $lector=""; $inicio=""; $final="";
       if(isset($_GET["titulo"]))
         $titulo=$_GET["titulo"];

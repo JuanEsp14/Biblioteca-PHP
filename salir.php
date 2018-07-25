@@ -1,6 +1,6 @@
 <?php
-  session_start();
-  session_destroy();
+  include 'user.php';
+  User::logout();
   header("Location: index.php");
   exit();
 ?>

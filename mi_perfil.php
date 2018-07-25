@@ -5,7 +5,7 @@
       FROM operaciones o
       INNER JOIN libros l ON l.id = o.libros_id
       INNER JOIN autores a ON a.id = l.autores_id
-      WHERE lector_id =".$user['id']
+      WHERE lector_id =".$user->id
   );
 ?>
 <div id="Perfil">
@@ -14,14 +14,14 @@
   <div class="row">
     <div class="col-md-2">
       <?php
-      echo "<img class='rounded-circle' src='mostrar_foto.php?id=".$user['id']."' width='150' height='150' >";
+      echo "<img class='rounded-circle' src='mostrar_foto.php?id=".$user->id."' width='150' height='150' >";
       ?>
     </div>
     <div class="col-md-10">
       <h1>Mi Perfil</h1>
-      <h6><?php echo "Nombre: ".$user['nombre'] ?></h6>
-      <h6><?php echo "Apellido: ".$user['apellido'] ?></h6>
-      <h6><?php echo "Email: ".$user['email'] ?></h6>
+      <h6><?php echo "Nombre: ".$user->nombre ?></h6>
+      <h6><?php echo "Apellido: ".$user->apellido ?></h6>
+      <h6><?php echo "Email: ".$user->email ?></h6>
     </div>
   </div>
   <hr>

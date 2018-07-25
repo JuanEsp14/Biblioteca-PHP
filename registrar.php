@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php require_once("connection.php"); ?>
 <?php
-  $link = conectar();
+  $link = Connection::conectar();
   $errors = array();
   $limite_kb = 16384;
 

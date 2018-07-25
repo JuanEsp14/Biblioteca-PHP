@@ -2,13 +2,10 @@
 <?php session_start(); ?>
 <?php
   include("connection.php");
-  $link = conectar();
-?>
-<?php
-  if(isset($_SESSION["session_username"])){
-    $query_user = mysqli_query($link, "SELECT * FROM usuarios WHERE email ='".$_SESSION['session_username']."' LIMIT 1");
-    $user = mysqli_fetch_array($query_user);
-  }
+  include("user.php");
+
+  $link = Connection::conectar();
+  $user = new User();
 ?>
 <html lang="en">
 <head>
@@ -30,9 +27,9 @@
         <img src="logo_icono.png" width="40" height="40" alt="LOGO">
       </a>
       <div class="text-right">
-        <?php if(isset($_SESSION["session_username"])){ ?>
+        <?php if($user->logeado()){ ?>
           <a class="btn" href="mi_perfil.php">
-            <?php echo $user['rol'].": ".$user['apellido'].", ".$user['nombre']; ?>
+            <?php echo $user->rol.": ".$user->apellido.", ".$user->nombre; ?>
           </a>
           <a class="btn btn-danger" href='salir.php'>Salir</a>
         <?php }else{ ?>

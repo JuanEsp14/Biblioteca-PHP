@@ -1,6 +1,6 @@
 <?php
   include("connection.php");
-  $link = conectar();
+  $link = Connection::conectar();
 
   $id = $_GET['id'];
   // se recupera la información de la imagen
