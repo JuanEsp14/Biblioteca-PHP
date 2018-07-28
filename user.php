@@ -31,6 +31,24 @@
       return isset($_SESSION["session_username"]);
     }
 
+    //Nos devuelve si el usuario reservo el libro enviado por parámetro
+    function reservado($usID, $libroId){
+      $query = 'SELECT COUNT(*) AS res FROM operaciones
+      WHERE ultimo_estado = "RESERVADO" AND lector_id = '.$usID.' AND libros_id = '.$libroId;
+      $aux = mysqli_query(Connection::conectar(), $query);
+      $respuesta = mysqli_fetch_array($aux);
+      return $respuesta['res'];
+    }
+
+    //Nos devuelve la cantidad de las operaciones realizadas por el usuario
+    function cantidadOperaciones($usID){
+      $query = 'SELECT COUNT(*) AS res FROM operaciones
+      WHERE ultimo_estado = "RESERVADO" OR ultimo_estado = "PRESTADO" AND lector_id = '.$usID;
+      $aux = mysqli_query(Connection::conectar(), $query);
+      $respuesta = mysqli_fetch_array($aux);
+      return $respuesta['res'];
+    }
+
     function logout(){
       session_start();
       session_destroy();

@@ -49,18 +49,8 @@
         WHERE ultimo_estado = "PRESTADO" AND libros_id ='.$row["id"];
         $aux2 = mysqli_query($link, $query);
 
-        $query = 'SELECT COUNT(*) AS res FROM operaciones
-        WHERE ultimo_estado = "RESERVADO" AND lector_id = '.$user->id.' AND libros_id = '.$row['id'];
-        $aux3 = mysqli_query($link, $query);
-
-        $query = 'SELECT COUNT(*) AS res FROM operaciones
-        WHERE ultimo_estado = "RESERVADO" OR ultimo_estado = "PRESTADO" AND lector_id = '.$user->id;
-        $aux4 = mysqli_query($link, $query);
-
         $cantRes = mysqli_fetch_array($aux1);
-        $cantPres = mysqli_fetch_array($aux2);
-        $reservado = mysqli_fetch_array($aux3);
-        $opsUsuario = mysqli_fetch_array($aux4);?>
+        $cantPres = mysqli_fetch_array($aux2);?>
         <tr>
           <td>
             <?php
@@ -72,7 +62,7 @@
           <td><?php echo $row["cantidad"]?> ( <?php echo $cantRes['res']?> reservados <?php echo $cantPres['res']?> prestados)</td>
           <td>
             <?php if(($row["cantidad"] > $cantRes['res']+$cantPres['res']) &&
-            (3 > $opsUsuario['res']) && ($reservado['res'] == 0)){
+            (3 > User::cantidadOperaciones($user->id)) && (User::reservado($user->id, $row['id']) == 0)){
               echo "<a class='btn btn-info' href='funciones/reservar.php?id=".$row['id']."&usId=".$user->id."'>Reservar</a> ";
            } ?>
         </td>
